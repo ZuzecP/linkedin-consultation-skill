@@ -1,6 +1,6 @@
 # linkedin-consultation-skill
 
-Reviews and improves LinkedIn profiles for HR professionals, recruiters, and job seekers, based
+Reviews LinkedIn profile and optimises it (mainly) for job seekers, based
 on a specific named methodology. Built for use as a Claude skill.
 
 ## Methodology / authorship
@@ -11,12 +11,12 @@ thousands of CVs and LinkedIn profiles.
 
 ## How to use it
 
-Upload it in Claude.ai under Settings → Customize → Skills, and start using it. It triggers
+Upload the SKILL.md file in Claude.ai under Settings → Customize → Skills, and start using it.  It triggers
 automatically whenever you ask Claude to review, assess, improve, rewrite, or give feedback on
 a LinkedIn profile, on phrases like "review my LinkedIn," "help me improve my profile,"
 "LinkedIn feedback," "rewrite my headline/about/experience," "audit my LinkedIn," or any mention
 of LinkedIn profile work — including just uploading a LinkedIn screenshot and asking what to do
-with it.
+with it. 
 
 ## What's in the repo
 
