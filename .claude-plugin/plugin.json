@@ -1,7 +1,7 @@
 {
   "name": "linkedin-consultation",
   "description": "Structured LinkedIn profile consultation for job seekers, based on Zuzana Pešková's methodology. Assesses a profile, prioritises what to fix, and drafts section copy grounded in evidence the user provides.",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "author": {
     "name": "Zuzana Pešková"
   },
