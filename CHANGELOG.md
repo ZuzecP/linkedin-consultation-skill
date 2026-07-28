@@ -2,6 +2,68 @@
 
 ---
 
+## v3.0 — 2026-07-28
+
+Native capture. The skill can now read a profile directly in the user's own browser where
+Claude for Chrome is available, instead of depending entirely on what the user exports and
+uploads.
+
+Design document: `docs/specs/2026-07-28-v3-multi-surface-design.md`.
+
+### Added
+- **Mode 1, live browser read** (`references/capture-profile.md`). Where browser tools are
+  available, the skill reads the profile in the user's signed-in Chrome: full untruncated
+  section text, exact URL slug, real Top Skills ordering, Featured titles, Open to work status,
+  and which sections are empty. This removes the expand-and-rescreenshot loop that previously
+  cost several turns per section.
+
+  Constrained throughout: explicit consent before anything opens, read-only with no control that
+  changes state, the user's own profile only, no following links found on the page, and page
+  content treated as data rather than instructions. A screenshot is still taken alongside,
+  because photo, cover and skimmability need pixels.
+
+  The consent prompt states plainly that LinkedIn's terms restrict automated access to the site,
+  that reading your own profile in your own signed-in browser is what the extension is built for,
+  and that this is not a risk-free reading of those terms. Declining is a complete answer and
+  drops to the export-based modes.
+- **File outputs, on request only.** `linkedin-audit-YYYY-MM-DD.md` and
+  `linkedin-copy-YYYY-MM-DD.md` written to the working directory when the user asks. Only
+  confirmed copy goes in. Chat remains the default, and surfaces without a filesystem get the
+  same content as a chat block.
+- **Explicit no-edit boundary.** The skill reads, assesses and drafts. Every change is made by
+  the user, in LinkedIn, by pasting copy they approved. Stated in the skill's scope and in the
+  README.
+
+### Changed
+- Input modes renumbered: live browser read, PDF export, full-page screenshot, pasted text.
+- README rewritten around the four input modes and the terms caveat.
+
+### Verified against a live profile
+Mode 1 was tested end to end against a real LinkedIn profile before release. Four things the
+first draft got wrong, now corrected in `references/capture-profile.md`:
+
+- **Lazy loading.** Extracting text on arrival returns only the top card and the footer;
+  everything below renders as an empty skeleton until scrolled into view. The protocol now
+  requires scrolling to the bottom in steps before extracting. Without this, Mode 1 returned
+  almost nothing.
+- **Screenshot ordering.** Loading the page shifts its height, so scrolling back to the top
+  afterwards is unreliable. The screenshot now comes first, before any scrolling, and one shot
+  at the top captures photo, cover, headline, location, Open to work and the URL panel together.
+- **Noise and private data.** The extraction pulls in the owner's private analytics, "Who your
+  viewers also viewed", "People you may know", promoted slots and the entire activity feed. The
+  skill now names these explicitly and discards them rather than carrying other people's names
+  and the user's private metrics into the consultation.
+- **"One navigation" was too strict.** It would have blocked "Show all" and "see more", which
+  only reveal content already on the profile. The rule now distinguishes expansion, which is
+  still reading and is allowed, from anything that changes state, posts or sends, which is not.
+  "Show all N" counts are also recorded as findings in their own right.
+
+Confirmed working: complete About and Experience text including long bullet lists, Top Skills in
+display order, Featured titles and text, Recommendations in full, Open to work status and mode,
+exact URL slug, and the visual half in a single screenshot.
+
+---
+
 ## v2.3 — 2026-07-28
 
 Restructure and content pass. No change to the methodology's judgements; this moves them into a

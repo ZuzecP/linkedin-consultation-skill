@@ -5,7 +5,8 @@ Target version: v3.0
 
 Status: shipping in two releases.
 - **v2.3** — Phases 1, 3 and 4-hygiene. Implemented.
-- **v3.0** — Phase 2 (native browser capture) and Phase 4 file outputs. Not yet implemented.
+- **v3.0** — Phase 2 (native browser capture) and Phase 4 file outputs. Implemented and tested
+  against a live profile; four defects found and corrected, see the v3.0 CHANGELOG entry.
 
 ---
 

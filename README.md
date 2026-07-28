@@ -49,8 +49,19 @@ headline," or "audit my LinkedIn," and when you share a profile screenshot, PDF 
 and ask what to do with it. You can also invoke it directly with `/linkedin-consultation`.
 
 It will ask how you want to work: quick wins first, or a full top-to-bottom review. Then it
-needs your profile. The best input is LinkedIn's own **More → Save to PDF** export plus one
-screenshot of the top of your profile; a full-page screenshot also works.
+needs your profile, by whichever of these is available:
+
+1. **Reading it live in your browser**, if you're in Cowork or Claude Code with Claude for
+   Chrome. It asks before opening anything, reads only your own profile, and never clicks a
+   control that changes state. LinkedIn's terms restrict automated access to the site; reading
+   your own profile in your own signed-in browser is what the extension is built for, but it
+   isn't a risk-free reading of those terms, and the skill says so before it opens anything.
+2. **LinkedIn's own More → Save to PDF export**, plus one screenshot of the top of your profile.
+   Nearly as good, and it sidesteps the terms question entirely.
+3. **A full-page screenshot**, via GoFullPage or similar.
+4. **Pasted text**, with the skill stating what it can't assess from that alone.
+
+It never edits your profile. You make every change yourself, by pasting copy you've approved.
 
 ## What's in the repo
 
@@ -67,9 +78,8 @@ screenshot of the top of your profile; a full-page screenshot also works.
 
 The skill covers the profile itself: URL, photo, cover, headline, About, Featured, experience,
 skills, recommendations, and Open to work settings. It does not cover content creation, posting
-strategy, or algorithm optimisation. It does not access LinkedIn directly and works only from
-what you share. It does not fabricate facts, metrics or achievements, and it will decline if
-asked to.
+strategy, or algorithm optimisation. It reads your profile but never edits it. It does not
+fabricate facts, metrics or achievements, and it will decline if asked to.
 
 For complex career pivots or positioning questions, it recommends
 [booking a session with Zuzana directly](https://calendar.app.google/cteEUoLRwGwuPfWH7).
