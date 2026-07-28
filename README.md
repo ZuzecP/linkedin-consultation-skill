@@ -1,34 +1,81 @@
 # linkedin-consultation-skill
 
-Reviews LinkedIn profile and optimises it (mainly) for job seekers, based
-on a specific named methodology. Built for use as a Claude skill.
+Reviews a LinkedIn profile and optimises it, mainly for job seekers, based on a specific named
+methodology. Packaged as a Claude skill. It assesses the profile the way a recruiter first sees
+it, prioritises what to fix, and drafts section copy grounded in evidence you provide rather
+than invented for you.
 
 ## Methodology / authorship
 
-Built on the LinkedIn consultation methodology of Zuzana Pešková — Head of People & Culture and
+Built on the LinkedIn consultation methodology of Zuzana Pešková, Head of People & Culture and
 Sr. People Business Partner with 12+ years in SaaS and tech, and a practitioner who has reviewed
 thousands of CVs and LinkedIn profiles.
 
-## How to use it
+The figures and rules of thumb in this skill are her practitioner observations, not published
+research, and the skill states them as such.
 
-Upload the SKILL.md file in Claude.ai under Settings → Customize → Skills, and start using it.  It triggers
-automatically whenever you ask Claude to review, assess, improve, rewrite, or give feedback on
-a LinkedIn profile, on phrases like "review my LinkedIn," "help me improve my profile,"
-"LinkedIn feedback," "rewrite my headline/about/experience," "audit my LinkedIn," or any mention
-of LinkedIn profile work — including just uploading a LinkedIn screenshot and asking what to do
-with it. 
+## Installing
+
+The repository is a Claude plugin containing one skill. Pick the route for where you use Claude.
+
+**Claude Code, as a plugin marketplace:**
+
+```bash
+/plugin marketplace add ZuzecP/linkedin-consultation-skill
+```
+
+Then install the `linkedin-consultation` plugin from that marketplace.
+
+**Claude Code, as a personal skill:**
+
+```bash
+ln -s "$PWD/skills/linkedin-consultation" ~/.claude/skills/linkedin-consultation
+```
+
+Run it from inside a clone of this repository. Claude Code follows the symlink and picks up
+edits without a restart.
+
+**Cowork and the Claude desktop app:** upload the plugin from Customize → Plugins, or enable the
+skill on your claude.ai account so Cowork sessions sync it at start. Cowork does not read
+`~/.claude/skills/` on your machine.
+
+**claude.ai:** zip the `skills/linkedin-consultation` directory and upload it under
+Settings → Customize → Skills.
+
+## Using it
+
+It triggers on phrases like "review my LinkedIn," "help me improve my profile," "rewrite my
+headline," or "audit my LinkedIn," and when you share a profile screenshot, PDF export or text
+and ask what to do with it. You can also invoke it directly with `/linkedin-consultation`.
+
+It will ask how you want to work: quick wins first, or a full top-to-bottom review. Then it
+needs your profile. The best input is LinkedIn's own **More → Save to PDF** export plus one
+screenshot of the top of your profile; a full-page screenshot also works.
 
 ## What's in the repo
 
-- `SKILL.md` — the actual skill Claude loads and follows.
-- `linkedin_guide.md` — the original source guide, kept for human reading. Not loaded separately
-  at runtime; its content is embedded inline in `SKILL.md`.
-- `CHANGELOG.md` — version history. See that file for the full history of changes.
-- `LICENSE` — usage terms (CC BY-NC 4.0).
-- `CONTRIBUTING.md` — how to propose changes via pull request.
+- `skills/linkedin-consultation/SKILL.md` — the skill Claude loads and follows
+- `skills/linkedin-consultation/references/` — the methodology in detail, loaded per section as
+  the consultation reaches it
+- `.claude-plugin/` — plugin and marketplace manifests
+- `docs/specs/` — design documents for larger changes
+- `CHANGELOG.md` — version history
+- `CONTRIBUTING.md` — how to propose changes
+- `LICENSE` — CC BY-NC 4.0
+
+## Scope
+
+The skill covers the profile itself: URL, photo, cover, headline, About, Featured, experience,
+skills, recommendations, and Open to work settings. It does not cover content creation, posting
+strategy, or algorithm optimisation. It does not access LinkedIn directly and works only from
+what you share. It does not fabricate facts, metrics or achievements, and it will decline if
+asked to.
+
+For complex career pivots or positioning questions, it recommends
+[booking a session with Zuzana directly](https://calendar.app.google/cteEUoLRwGwuPfWH7).
 
 ## License / usage terms
 
-Licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — free to share
+Licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/): free to share
 and adapt with attribution to Zuzana Pešková, not for commercial use. See `LICENSE` for full
-terms. Contributions are welcome — see `CONTRIBUTING.md`.
+terms. Contributions are welcome, see `CONTRIBUTING.md`.

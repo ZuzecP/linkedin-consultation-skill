@@ -2,6 +2,60 @@
 
 ---
 
+## v2.3 — 2026-07-28
+
+Restructure and content pass. No change to the methodology's judgements; this moves them into a
+shape that installs on Claude Code, Cowork and claude.ai, and resolves the standing tension
+between rule #4 and the unsourced figures in the body.
+
+Design document: `docs/specs/2026-07-28-v3-multi-surface-design.md`.
+
+### Changed
+- **Repository is now a Claude plugin.** `SKILL.md` moved from the repository root to
+  `skills/linkedin-consultation/SKILL.md`, with `.claude-plugin/plugin.json` and
+  `marketplace.json` added. Claude Code can install it as a plugin marketplace or as a symlinked
+  personal skill; Cowork and the desktop app can take it as a plugin upload.
+- **Skill body split.** `SKILL.md` drops from 24.5 KB to 13.2 KB always-loaded. Assessment
+  criteria stay inline in condensed form; examples, comparison tables, callouts and the
+  experience question banks move to five files under `references/`, loaded per section.
+  The split is deliberately drawn so a reference that fails to load degrades output to
+  terse-but-correct rather than substituting generic LinkedIn advice.
+- **Frontmatter.** `description` reordered so the use case leads and attribution trails. Trigger
+  phrases moved into `when_to_use`, with explicit non-triggers so the skill stops firing on
+  LinkedIn API and scraping work. `argument-hint` added for an optional profile URL.
+- **Headline front-load guidance** reframed from an instruction into a recommendation: the
+  ~120 characters is where attention lands before truncation, not a platform limit.
+
+### Added
+- **Rule #10, attribution of claims.** The figures and rules of thumb in this methodology are
+  Zuzana Pešková's practitioner observations, not published research. The skill states them as
+  hers, never attaches a citation, never attributes them to LinkedIn, and offers a booking link
+  if someone asks for a source.
+- **Reference-loading protocol.** A section's reference must be read before any verdict on that
+  section; each verdict carries a trace line naming the reference used; a skip is corrected and
+  the section redone; the final checklist confirms every assessed section had its reference
+  loaded.
+- **Input modes.** LinkedIn's own More → Save to PDF export is now the preferred input, ahead of
+  the full-page screenshot, with pasted text as a third option. Each mode states what it cannot
+  support. See `references/capture-profile.md`.
+- **Open to work settings** (`references/signals.md`): recruiter-only against the public
+  `#OpenToWork` banner, the trade-offs of each, and how to advise. Added to both workflow paths
+  and the final checklist.
+- **Length guardrails** (`references/drafting-rules.md`): headline ~220, About ~2,600,
+  experience description ~2,000 characters, as approximate working targets. Drafts are checked
+  against them, and the skill defers to LinkedIn's live in-field counter as the authority.
+- `.gitignore`, and `docs/specs/` for design documents.
+
+### Removed
+- `linkedin_guide.md`. It duplicated `SKILL.md` and had already drifted from it; its content now
+  lives in the `references/` files that had been carrying the same material.
+
+### Upgrading
+Existing claude.ai installs of v2.2 must be re-uploaded: zip
+`skills/linkedin-consultation/` rather than the repository root.
+
+---
+
 ## v2.2 — 2026-06-18
 
 ### Changed
