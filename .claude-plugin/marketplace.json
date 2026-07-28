@@ -1,0 +1,21 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "linkedin-consultation-skill",
+  "description": "LinkedIn profile consultation methodology by Zuzana Pešková, packaged as a Claude plugin",
+  "owner": {
+    "name": "Zuzana Pešková"
+  },
+  "plugins": [
+    {
+      "name": "linkedin-consultation",
+      "description": "Structured LinkedIn profile consultation for job seekers. Assesses a profile, prioritises what to fix, and drafts section copy grounded in evidence the user provides.",
+      "author": {
+        "name": "Zuzana Pešková"
+      },
+      "category": "productivity",
+      "source": "./",
+      "homepage": "https://github.com/ZuzecP/linkedin-consultation-skill",
+      "license": "CC-BY-NC-4.0"
+    }
+  ]
+}
