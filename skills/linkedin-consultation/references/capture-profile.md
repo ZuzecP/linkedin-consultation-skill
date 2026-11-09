@@ -11,7 +11,8 @@ used, you need **text** for the copy work and **an image** for the photo and cov
 ## Mode 1 — Read the live profile in the user's browser
 
 **Only when browser tools are actually available**: Claude for Chrome, or the browser built into
-the Claude desktop app. If neither is, go to Mode 2 without mentioning this option.
+the Claude desktop app. If neither is, go to Mode 2 and suggest those browser options to the
+user, since reading the live profile gives the best experience.
 
 The browser must already be signed in to LinkedIn as the user. Logging in is out of scope: never
 ask for or enter credentials. If LinkedIn shows a sign-in page, or the profile isn't the user's,
