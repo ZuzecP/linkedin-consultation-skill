@@ -2,13 +2,40 @@
 
 ---
 
+## v3.1 — 2026-11-09
+
+Alignment with current Anthropic skill and plugin guidance.
+
+### Changed
+- **Frontmatter.** `when_to_use` is folded into `description` and `argument-hint` is removed, so
+  the skill uses only fields that every surface accepts (including a claude.ai skill upload).
+  The description no longer carries the author bio. A profile URL passed as an argument still
+  works.
+- **Mode 1** now covers any browser already signed in to LinkedIn as the user: Claude for Chrome
+  or the browser built into the Claude desktop app. The sign-in is never done by the skill. The
+  PDF export is stated as the fallback when no such browser is available, access is declined or
+  the browser is not signed in.
+- README: exact install commands, a statement that this repository is its own marketplace and is
+  not listed in Anthropic's directory, and Cowork and claude.ai steps taken from Anthropic's
+  documentation.
+- The "Top 3 carry the algorithmic weight" line is worded as a rule of thumb.
+
+### Added
+- `capture-profile.md`: a short contents line.
+- `CONTRIBUTING.md`: three check prompts to run after changing the consent, no-fabrication or
+  reference-loading rules.
+
+### Removed
+- `docs/specs/`: the v3 design document. It is kept in git history; this changelog records what
+  changed.
+
+---
+
 ## v3.0 — 2026-07-28
 
 Native capture. The skill can now read a profile directly in the user's own browser where
 Claude for Chrome is available, instead of depending entirely on what the user exports and
 uploads.
-
-Design document: `docs/specs/2026-07-28-v3-multi-surface-design.md`.
 
 ### Added
 - **Mode 1, live browser read** (`references/capture-profile.md`). Where browser tools are
@@ -70,8 +97,6 @@ Restructure and content pass. No change to the methodology's judgements; this mo
 shape that installs on Claude Code, Cowork and claude.ai, and resolves the standing tension
 between rule #4 and the unsourced figures in the body.
 
-Design document: `docs/specs/2026-07-28-v3-multi-surface-design.md`.
-
 ### Changed
 - **Repository is now a Claude plugin.** `SKILL.md` moved from the repository root to
   `skills/linkedin-consultation/SKILL.md`, with `.claude-plugin/plugin.json` and
@@ -106,7 +131,7 @@ Design document: `docs/specs/2026-07-28-v3-multi-surface-design.md`.
 - **Length guardrails** (`references/drafting-rules.md`): headline ~220, About ~2,600,
   experience description ~2,000 characters, as approximate working targets. Drafts are checked
   against them, and the skill defers to LinkedIn's live in-field counter as the authority.
-- `.gitignore`, and `docs/specs/` for design documents.
+- `.gitignore`.
 
 ### Removed
 - `linkedin_guide.md`. It duplicated `SKILL.md` and had already drifted from it; its content now

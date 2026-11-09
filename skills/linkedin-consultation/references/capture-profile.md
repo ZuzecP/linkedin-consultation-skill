@@ -1,5 +1,8 @@
 # Getting the profile in
 
+Contents: Mode 1 live browser read · Mode 2 PDF export · Mode 3 full-page screenshot · Mode 4
+pasted text · what to capture regardless of mode · profiles that aren't the user's own.
+
 Four input modes. Try them in this order and take the best one available. Whichever mode is
 used, you need **text** for the copy work and **an image** for the photo and cover.
 
@@ -7,12 +10,12 @@ used, you need **text** for the copy work and **an image** for the photo and cov
 
 ## Mode 1 — Read the live profile in the user's browser
 
-**Only when browser tools are actually available** (Claude for Chrome, in Cowork or Claude Code).
-If they aren't, go to Mode 2 without mentioning this option.
+**Only when browser tools are actually available**: Claude for Chrome, or the browser built into
+the Claude desktop app. If neither is, go to Mode 2 without mentioning this option.
 
-An in-app or sandboxed browser is not a substitute: it won't carry the user's LinkedIn session,
-and logging in is out of scope. If the only browser available isn't the user's own signed-in
-Chrome, treat Mode 1 as unavailable.
+The browser must already be signed in to LinkedIn as the user. Logging in is out of scope: never
+ask for or enter credentials. If LinkedIn shows a sign-in page, or the profile isn't the user's,
+ask them to sign in themselves in that browser, or move to Mode 2.
 
 ### Ask first
 
@@ -23,9 +26,8 @@ Never open a browser silently. Ask, and say what you'll do:
 > the page, and take one screenshot for your photo and cover. I won't click anything, change
 > anything, or go anywhere else.
 >
-> Worth knowing: LinkedIn's terms restrict automated access to the site. Reading your own profile
-> in your own signed-in browser is what this extension is built for, but it isn't a risk-free
-> reading of those terms. If you'd rather avoid the question entirely, LinkedIn's own
+> Worth knowing: LinkedIn's terms restrict automated access to the site. Reading only your own profile
+> in your own signed-in browser is a narrow use, but it isn't a risk-free reading of those terms. If you'd rather avoid the question entirely, LinkedIn's own
 > **More → Save to PDF** export works nearly as well.
 >
 > Which would you prefer?
@@ -103,6 +105,9 @@ skimmability need pixels.
 ---
 
 ## Mode 2 — LinkedIn's own PDF export
+
+The fallback when Mode 1 isn't possible: no browser tools, the browser isn't signed in, or the user
+declined access.
 
 > On your profile, click **More → Save to PDF**. That gives me the full text of every section
 > without you having to expand anything. Upload it here, plus one screenshot of the top of your

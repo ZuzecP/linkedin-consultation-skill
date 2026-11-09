@@ -18,13 +18,13 @@ research, and the skill states them as such.
 
 The repository is a Claude plugin containing one skill. Pick the route for where you use Claude.
 
-**Claude Code, as a plugin marketplace:**
+**Claude Code, as a plugin marketplace.** This repository is its own plugin marketplace. It is not
+listed in Anthropic's plugin directory.
 
 ```bash
-/plugin marketplace add ZuzecP/linkedin-consultation-skill
+claude plugin marketplace add ZuzecP/linkedin-consultation-skill
+claude plugin install linkedin-consultation@linkedin-consultation-skill
 ```
-
-Then install the `linkedin-consultation` plugin from that marketplace.
 
 **Claude Code, as a personal skill:**
 
@@ -35,12 +35,11 @@ ln -s "$PWD/skills/linkedin-consultation" ~/.claude/skills/linkedin-consultation
 Run it from inside a clone of this repository. Claude Code follows the symlink and picks up
 edits without a restart.
 
-**Cowork and the Claude desktop app:** upload the plugin from Customize → Plugins, or enable the
-skill on your claude.ai account so Cowork sessions sync it at start. Cowork does not read
-`~/.claude/skills/` on your machine.
+**Cowork and the Claude desktop app:** under **Customize > Plugins**, add this GitHub repository as a
+marketplace, or zip the repository and use **Add > Upload plugin**.
 
-**claude.ai:** zip the `skills/linkedin-consultation` directory and upload it under
-Settings → Customize → Skills.
+**claude.ai:** zip the `skills/linkedin-consultation` folder, so that `linkedin-consultation/` is the
+top level of the archive, and upload it under **Customize > Skills**.
 
 ## Using it
 
@@ -51,13 +50,15 @@ and ask what to do with it. You can also invoke it directly with `/linkedin-cons
 It will ask how you want to work: quick wins first, or a full top-to-bottom review. Then it
 needs your profile, by whichever of these is available:
 
-1. **Reading it live in your browser**, if you're in Cowork or Claude Code with Claude for
-   Chrome. It asks before opening anything, reads only your own profile, and never clicks a
-   control that changes state. LinkedIn's terms restrict automated access to the site; reading
-   your own profile in your own signed-in browser is what the extension is built for, but it
-   isn't a risk-free reading of those terms, and the skill says so before it opens anything.
+1. **Reading it live in your browser**, if a browser signed in to LinkedIn as you is available:
+   Claude for Chrome, or the browser built into the Claude desktop app. It asks before opening
+   anything, reads only your own profile, and never clicks a control that changes state.
+   LinkedIn's terms restrict automated access to the site; reading only your own profile in your
+   own signed-in browser is a narrow use, but it isn't a risk-free reading of those terms, and
+   the skill says so before it opens anything.
 2. **LinkedIn's own More → Save to PDF export**, plus one screenshot of the top of your profile.
-   Nearly as good, and it sidesteps the terms question entirely.
+   The fallback if the browser isn't signed in, you'd rather not grant access, or none is
+   available. Nearly as good, and it sidesteps the terms question entirely.
 3. **A full-page screenshot**, via GoFullPage or similar.
 4. **Pasted text**, with the skill stating what it can't assess from that alone.
 
@@ -69,7 +70,6 @@ It never edits your profile. You make every change yourself, by pasting copy you
 - `skills/linkedin-consultation/references/` — the methodology in detail, loaded per section as
   the consultation reaches it
 - `.claude-plugin/` — plugin and marketplace manifests
-- `docs/specs/` — design documents for larger changes
 - `CHANGELOG.md` — version history
 - `CONTRIBUTING.md` — how to propose changes
 - `LICENSE` — CC BY-NC 4.0
